@@ -9,7 +9,7 @@ mathB = 0
 verCount = 10
 for n in range(1,mathMax):
     mathL = "{}".format(n)
-    if n % 7 == 0 or mathL[-1] == "7" :
+    if n % 7 == 0 or mathL.find("7") >= 0 :
         mathL = "*" + mathL
     while len(mathL) < mathLength :
         mathL = " " + mathL
