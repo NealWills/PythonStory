@@ -1,23 +1,22 @@
 mathList = ""
+# 最大数
+mathMax = 208
+# 动态字符长度 为了保持字符串长度一致 比较好看 字符右对齐
+mathLength = len("{}".format(mathMax)) + 3
+# 基数
 mathB = 0
-verCount = 7
-for n in range(1,106):
-    mathL = "{:04d}".format(n)
+# 每行字符串的个数
+verCount = 10
+for n in range(1,mathMax):
+    mathL = "{}".format(n)
+    if n % 7 == 0 or mathL[-1] == "7" :
+        mathL = "*" + mathL
+    while len(mathL) < mathLength :
+        mathL = " " + mathL
     if (n - 1) // verCount != mathB :
         mathList = mathList + "\n"
-        mathB = n // verCount
-    if mathL[-1] == "7" or mathL[-2] == "7" or mathL[-3] == "7" or n % 7 == 0:
-        mathL = "*" + mathL[1] + mathL[2] + mathL[3]
-    if mathL[0] == "0":
-        mathL = " " + mathL[1] + mathL[2] + mathL[3]
-    if mathL[1] == "0" and n < 100:
-        mathL = mathL[0] + " " + mathL[2] + mathL[3]
-    if mathL[2] == "0" and n < 100:
-        mathL = mathL[0] + mathL[1] + " " + mathL[3]
-    if mathList == "" :
-        mathList = mathL + "  "
-    else :
-        mathList = "{}{}  ".format(mathList, mathL)
+        mathB = mathB + 1
+    mathList = mathList + mathL
 
 print(mathList)
 
